@@ -1,4 +1,46 @@
-var ship = new Rectangle(getWidth() * 0.1, getHeight() * 0.2);
+
+<html>
+<head>
+<title>Henrique's game</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://static.codehs.com/gulp/bc30d2e01f2d50b2d450874844430547ecda3f9e/chs-js-lib/chs.js"></script>
+
+
+<style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
+</style>
+
+</head>
+
+<body>
+<h1>java game</h1>
+
+
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+<pre id="console"></pre>
+
+<script>
+window.onload = function() {
+
+    var ship = new Rectangle(getWidth() * 0.1, getHeight() * 0.2);
 var rectl ;
 var rectr ;
 var circle ;
@@ -106,7 +148,7 @@ function moveB(){
     circle2.move( 0,speed );
     circle3.move( 0,speed );
     circle4.move( 0,speed );
-    println(speed);
+//    println(speed);
     if (circle.getY() > getHeight() + circle.getRadius()){
         
         circle.setPosition (getWidth() * 0.315, 0);
@@ -253,3 +295,13 @@ function sideBox(){
         }
     }
 */
+
+
+    if (typeof start === 'function') {
+        start();
+    }
+};
+</script>
+
+</body>
+</html>
