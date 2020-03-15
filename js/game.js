@@ -1,4 +1,5 @@
 window.onload = function() {
+// universal variables 
     var ship = new Rectangle(getWidth() * 0.1, getHeight() * 0.2);
     var rectl ;
     var rectr ;
@@ -20,6 +21,19 @@ window.onload = function() {
     var txt = new Text("Hello, world!", "17pt Arial");
     var txts = new Text("Hello, world!", "17pt Arial");
 
+// main start function 
+    function start(){
+      shipp();
+      balls();
+      sideBox();
+      mouseMoveMethod(moveS);
+      keyDownMethod(keyDown);
+      keyUpMethod(keyUp);
+      setTimer(moveB, 50);
+      setTimer(moveship,20);
+    }
+
+//these function test if the ship colided with the balls
     function colision(){
         if (eleml != rectl && elemr != rectr){
             if(elemr == null){
@@ -33,18 +47,7 @@ window.onload = function() {
         }
     }
 
-    function start(){
-
-      shipp();
-      balls();
-      sideBox();
-      mouseMoveMethod(moveS);
-      keyDownMethod(keyDown);
-      keyUpMethod(keyUp);
-      setTimer(moveB, 50);
-      setTimer(moveship,20);
-    }
-
+// these function spwon the balls and randomize one of them to not spown 
     function balls(){
             circle = new Circle(getWidth() * 0.125 / 2);
             circle.setPosition(getWidth() * 0.315, 0);
@@ -83,6 +86,7 @@ window.onload = function() {
             }
     }
 
+// these function controls the moviment of the balls and randmizes the missing ball for the next wave 
     function moveB(){
         eleml = getElementAt(ship.getX() + 1 ,ship.getY() - 3 );
         elemr = getElementAt(ship.getX() + getWidth() * 0.1 - 1 ,ship.getY() - 3 );
@@ -153,6 +157,7 @@ window.onload = function() {
         }
     }
 
+// these function controls the shipp's movement
     function moveS(e){
         ship.setPosition(e.getX() - (getHeight() * 0.1)/2, (getHeight() - getHeight() * 0.2) - getHeight() * 0.01 );
         if( e.getX() < getWidth() - getWidth() + getWidth()/4 + (getHeight() * 0.1)/2 ){
@@ -163,15 +168,16 @@ window.onload = function() {
         }
         
         add(ship);
-
     }
 
+//these function creates the shipp
     function shipp(){
             ship.setPosition(getWidth()/2 - (getWidth() * 0.1)/2, (getHeight() - getHeight() * 0.2) - getHeight() * 0.01 );
             ship.setColor(Color.GREEN);
             add(ship);
     }
 
+// these function make the shipp move when there is kye input
     function keyDown(e){
     	if(e.keyCode == Keyboard.LEFT){
     		boxX = -1 * speed;
@@ -192,11 +198,13 @@ window.onload = function() {
     	}
     }
 
+// these function makes the shipp stop when thereis no kye input 
     function keyUp(e) {
     	boxX = 0;
     	boxY = 0;
     }
 
+// these function controles the moviment of the shipp 
     function moveship(){
         
         ship.move(boxX, boxY);
@@ -208,6 +216,7 @@ window.onload = function() {
         }
     }
 
+//these functon makes the side limits on the canvis so the shipp cant go inside the wall.
     function sideBox(){
             rectl = new Rectangle(getWidth()/4, getHeight());
             rectl.setPosition(getWidth() - getWidth(),0);
